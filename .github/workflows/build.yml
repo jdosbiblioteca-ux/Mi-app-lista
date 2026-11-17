@@ -36,7 +36,9 @@ jobs:
             libavcodec-dev \
             zlib1g-dev \
             libffi-dev \
-            libssl-dev
+            libssl-dev \
+            unzip \
+            zip
 
     - name: Instalar Buildozer y herramientas de Android
       run: |
@@ -45,7 +47,7 @@ jobs:
 
     - name: Construir APK con Buildozer
       run: |
-        buildozer -v android debug
+        yes | buildozer -v android debug
 
     - name: Subir artefacto (APK)
       uses: actions/upload-artifact@v4
