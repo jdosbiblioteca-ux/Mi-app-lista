@@ -15,7 +15,7 @@ version = 0.1
 # (str) Source directory where your source files are located
 source.dir = .
 
-# (list) Source files to include (let it default to your project files)
+# (list) Source files to include
 source.include_exts = py,png,jpg,kv,atlas
 
 # (list) Application requirements
@@ -41,6 +41,10 @@ android.sdk = 31
 
 # (str) android build tools version
 android.build_tools_version = 31.0.0
+
+# (list) Supported architectures
+# Limitamos a una sola arquitectura para evitar conflictos de compilación en GitHub
+android.archs = arm64-v8a
 
 # (str) python-for-android branch
 p4a.branch = master
