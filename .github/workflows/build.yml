@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Post Checkout del repositorio
+    - name: Checkout del repositorio
       uses: actions/checkout@v4
 
     - name: Configurar entorno de Python 3.10
@@ -30,11 +30,22 @@ jobs:
         pip install --upgrade pip
         pip install Cython==0.29.36 buildozer
 
-    - name: Pre-aceptar licencias de Android SDK
+    - name: Instalar Android Command Line Tools manualmente
       run: |
-        mkdir -p $HOME/.buildozer/android/platform/android-sdk/licenses
-        echo -e "\n8933bac163af42a8b58fada7f18d7d8058584e06" > $HOME/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
-        echo -e "\n24333f8a43b68242cef95709aec1f326cfa0227f" >> $HOME/.buildozer/android/platform/android-sdk/licenses/android-sdk-license
+        ANDROID_SDK_ROOT="$HOME/.buildozer/android/platform/android-sdk"
+        mkdir -p "$ANDROID_SDK_ROOT/cmdline-tools"
+        
+        # Descargar herramientas de línea de comandos oficiales de Android
+        wget -q https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -O cmdline-tools.zip
+        unzip -q cmdline-tools.zip -d "$ANDROID_SDK_ROOT/cmdline-tools"
+        
+        # Reorganizar la estructura para que Buildozer reconozca el sdkmanager
+        mv "$ANDROID_SDK_ROOT/cmdline-tools/cmdline-tools" "$ANDROID_SDK_ROOT/cmdline-tools/latest"
+        rm cmdline-tools.zip
+        
+        # Aceptar licencias automáticamente
+        mkdir -p "$ANDROID_SDK_ROOT/licenses"
+        yes | "$ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager" --licenses || true
 
     - name: Construir APK con Buildozer
       run: |
