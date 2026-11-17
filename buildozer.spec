@@ -28,7 +28,7 @@ orientation = portrait
 android.permissions = INTERNET
 
 # (int) Target Android API, should be as high as possible.
-android.api = 31
+android.api = 33
 
 # (int) Minimum API your APK will support
 android.min_api = 21
@@ -37,13 +37,12 @@ android.min_api = 21
 android.ndk = 25b
 
 # (str) Android SDK version to use
-android.sdk = 31
+android.sdk = 33
 
 # (str) android build tools version
-android.build_tools_version = 31.0.0
+android.build_tools_version = 33.0.2
 
 # (list) Supported architectures
-# Limitamos a una sola arquitectura para evitar conflictos de compilación en GitHub
 android.archs = arm64-v8a
 
 # (str) python-for-android branch
