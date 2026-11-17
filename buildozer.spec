@@ -28,13 +28,19 @@ orientation = portrait
 android.permissions = INTERNET
 
 # (int) Target Android API, should be as high as possible.
-android.api = 33
+android.api = 31
 
 # (int) Minimum API your APK will support
 android.min_api = 21
 
 # (str) Android NDK version to use
 android.ndk = 25b
+
+# (str) Android SDK version to use
+android.sdk = 31
+
+# (str) android build tools version
+android.build_tools_version = 31.0.0
 
 # (str) python-for-android branch
 p4a.branch = master
