@@ -28,7 +28,7 @@ orientation = portrait
 android.permissions = INTERNET
 
 # (int) Target Android API, should be as high as possible.
-android.api = 31
+android.api = 33
 
 # (int) Minimum API your APK will support
 android.min_api = 21
@@ -36,8 +36,8 @@ android.min_api = 21
 # (str) Android NDK version to use
 android.ndk = 25b
 
-# (str) android build tools version
-android.build_tools_version = 31.0.0
+# (str) android build tools version (Comenta esta línea o bórrala para que Buildozer use la predeterminada compatible)
+# android.build_tools_version = 31.0.0
 
 # (list) Supported architectures
 android.archs = arm64-v8a
