@@ -47,7 +47,10 @@ jobs:
 
     - name: Configurar licencias y SDK de Android
       run: |
-        echo y | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --install "build-tools;33.0.2" "platforms;android-33"
+        mkdir -p /home/runner/.android
+        touch /home/runner/.android/repositories.cfg
+        yes | ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager --licenses || true
+        ${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin/sdkmanager "platform-tools" "platforms;android-31" "build-tools;31.0.0"
 
     - name: Construir APK con Buildozer
       run: |
